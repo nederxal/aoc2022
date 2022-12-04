@@ -40,5 +40,5 @@ def part2():
     print(somme)
 
 
-# part1()
+part1()
 part2()
