@@ -36,5 +36,5 @@ def part2():
 lower = "abcdefghijklmnopqrstuvwxyz"
 upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-# part1()
+part1()
 part2()
