@@ -22,15 +22,17 @@ from enum import IntEnum
 #     PAPER = 2
 #     SCISSORS = 3
 
+
 class ChoixElfe(IntEnum):
     A = 1
     B = 2
     C = 3
 
+
 class ChoixMoi(IntEnum):
     X = 1
     Y = 2
-    Z = 3    
+    Z = 3
 
 
 class Resultat(IntEnum):
@@ -48,54 +50,54 @@ def main():
             elfe, moi = line.rstrip().split(" ")
 
             if elfe == "A" and moi == "X":
-                #part 1 -> nul
+                # part 1 -> nul
                 total += Resultat.NUL.value + ChoixMoi.X.value
-                #part 2 -> perte
+                # part 2 -> perte
                 total2 += Resultat.DEFAITE.value + ChoixMoi.Z.value
             if elfe == "A" and moi == "Y":
-                #part 1 -> je gagne
+                # part 1 -> je gagne
                 total += Resultat.VICTOIRE.value + ChoixMoi.Y.value
-                #part 2 -> nul
+                # part 2 -> nul
                 total2 += Resultat.NUL.value + ChoixMoi.X.value
             if elfe == "A" and moi == "Z":
-                #part 1 -> je perds
+                # part 1 -> je perds
                 total += Resultat.DEFAITE.value + ChoixMoi.Z.value
-                #part 2 -> je gagne
+                # part 2 -> je gagne
                 total2 += Resultat.VICTOIRE.value + ChoixMoi.Y.value
 
             if elfe == "B" and moi == "X":
-                #part 1 -> je perds
+                # part 1 -> je perds
                 total += Resultat.DEFAITE.value + ChoixMoi.X.value
-                #part 2 -> perte
+                # part 2 -> perte
                 total2 += Resultat.DEFAITE.value + ChoixMoi.X.value
             if elfe == "B" and moi == "Y":
-                #part 1 -> nul
+                # part 1 -> nul
                 total += Resultat.NUL.value + ChoixMoi.Y.value
-                #part 2 -> nul
+                # part 2 -> nul
                 total2 += Resultat.NUL.value + ChoixMoi.Y.value
             if elfe == "B" and moi == "Z":
-                #part 1 -> je gagne
+                # part 1 -> je gagne
                 total += Resultat.VICTOIRE.value + ChoixMoi.Z.value
-                #part 2 -> je gagne
+                # part 2 -> je gagne
                 total2 += Resultat.VICTOIRE.value + ChoixMoi.Z.value
 
             if elfe == "C" and moi == "X":
-                #part 1 -> je gagne
+                # part 1 -> je gagne
                 total += Resultat.VICTOIRE.value + ChoixMoi.X.value
-                #part 2 -> perte
+                # part 2 -> perte
                 total2 += Resultat.DEFAITE.value + ChoixMoi.Y.value
             if elfe == "C" and moi == "Y":
-                #part 1 -> je perds
+                # part 1 -> je perds
                 total += Resultat.DEFAITE.value + ChoixMoi.Y.value
-                #part 2 -> nul
+                # part 2 -> nul
                 total2 += Resultat.NUL.value + ChoixMoi.Z.value
             if elfe == "C" and moi == "Z":
-                #part 1 -> nul
+                # part 1 -> nul
                 total += Resultat.NUL.value + ChoixMoi.Z.value
-                #part 2 -> je gagne
+                # part 2 -> je gagne
                 total2 += Resultat.VICTOIRE.value + ChoixMoi.X.value
             # print(total2)
-    
+
     print(total)
     print(total2)
 
