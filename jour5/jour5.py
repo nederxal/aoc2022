@@ -14,7 +14,6 @@ def gen():
                     cargo.setdefault(int(char / 4) + 1, []).append(line[char])
 
             if "move" in line:
-                re.findall(r"\d+", line)
                 orders.append(map(int, re.findall(r"\d+", line)))
 
     return cargo, orders
@@ -27,7 +26,7 @@ def part1():
             cargo[end].insert(0, cargo[start].pop(0))
 
     print("FINAL 1")
-    pprint.pprint(cargo, indent=4)
+    print("".join([v[0] for k, v in sorted(cargo.items())]))
 
 
 def part2():
@@ -35,16 +34,14 @@ def part2():
     for qte, start, end in orders:
         to_app = []
         for i in range(qte):
-            to_app.append(cargo[start].pop(0))
-
-        to_app.reverse()
+            to_app.insert(0, cargo[start].pop(0))
 
         for i in range(len(to_app)):
             cargo[end].insert(0, to_app[i])
         to_app.clear()
 
     print("FINAL2 ")
-    pprint.pprint(cargo, indent=4)
+    print("".join([v[0] for k, v in sorted(cargo.items())]))
 
 
 part1()
