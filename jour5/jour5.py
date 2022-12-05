@@ -2,50 +2,50 @@ import pprint
 import re
 
 
-cargo = {}
-orders = []
+def gen():
+    cargo = {}
+    orders = []
+
+    with open("input5.txt", "r") as f:
+
+        for line in f:
+            for char in range(1, len(line), 4):
+                if line[char] != " " and "[" in line:
+                    cargo.setdefault(int(char / 4) + 1, []).append(line[char])
+
+            if "move" in line:
+                re.findall(r"\d+", line)
+                orders.append(map(int, re.findall(r"\d+", line)))
+
+    return cargo, orders
 
 
-def gen(f):
+def part1():
+    cargo, orders = gen()
+    for qte, start, end in orders:
+        for i in range(qte):
+            cargo[end].insert(0, cargo[start].pop(0))
 
-    for line in f:
-        for char in range(1, len(line), 4):
-            if line[char] != " " and re.search(r"\[", line):
-                cargo.setdefault(int(char / 4) + 1, []).append(line[char])
-
-        if re.match("move", line):
-            orders.append(line.rstrip())
-
-
-def part1(cargo, orders):
-    for instruct in orders:
-        qte, start, end = re.findall(r"\d+", instruct)
-        for i in range(int(qte)):
-            cargo[int(end)].insert(0, cargo[int(start)].pop(0))
-
-    print("FINAL")
+    print("FINAL 1")
     pprint.pprint(cargo, indent=4)
 
 
-def part2(cargo, orders):
-    for instruct in orders:
-        qte, start, end = re.findall(r"\d+", instruct)
+def part2():
+    cargo, orders = gen()
+    for qte, start, end in orders:
         to_app = []
-        for i in range(int(qte)):
-            to_app.append(cargo[int(start)].pop(0))
+        for i in range(qte):
+            to_app.append(cargo[start].pop(0))
 
         to_app.reverse()
 
         for i in range(len(to_app)):
-            cargo[int(end)].insert(0, to_app[i])
+            cargo[end].insert(0, to_app[i])
         to_app.clear()
 
-    print("FINAL")
+    print("FINAL2 ")
     pprint.pprint(cargo, indent=4)
 
 
-f = open("input5.txt", "r")
-gen(f)
-
-part1(cargo, orders)
-part2(cargo, orders)
+part1()
+part2()
