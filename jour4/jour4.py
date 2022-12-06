@@ -34,7 +34,6 @@ def part2():
                 or (l1 <= l2 and u1 >= u2)
                 or (l2 <= l1 and u2 >= u1)
             ):
-                print(line.rstrip(), "overlapping")
                 somme += 1
 
     print(somme)
